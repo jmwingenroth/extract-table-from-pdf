@@ -27,14 +27,14 @@ if (any(c(
 exp_data <- zip_data %>%
     select(
         zip = X1, 
-        expos_24 = X4, 
-        expos_23 = X7, 
-        expos_22 = X10, 
-        expos_21 = X13, 
-        expos_20 = X15
+        expos_FAIR_FY24 = X4, 
+        expos_FAIR_FY23 = X7, 
+        expos_FAIR_FY22 = X10, 
+        expos_FAIR_FY21 = X13, 
+        expos_FAIR_FY20 = X15
     ) %>%
     mutate(across(
-        expos_24:expos_20, 
+        expos_FAIR_FY24:expos_FAIR_FY20, 
         \(x) parse_number(str_remove(x, " |-"))
     ))
 
