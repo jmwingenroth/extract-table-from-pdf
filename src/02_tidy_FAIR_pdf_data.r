@@ -5,7 +5,7 @@ library(tidyverse)
 time_variables <- paste0("Sep",24:20)
 
 # Find file paths and data descriptions based on file-naming conventions
-files <- list.files("data/int/", pattern = "extracted.*csv", full.names = TRUE)
+files <- list.files("data/", pattern = "extracted.*csv", full.names = TRUE, recursive = TRUE)
 titles <- str_extract(files, "[a-z]+(?=\\.csv)") 
 
 # Load raw data
@@ -50,4 +50,4 @@ for (i in 1:length(tidy_dfs)) {
 
 # Join into one dataframe and save
 left_join(tidy_dfs[[1]], tidy_dfs[[2]], by = "ZIP") %>%
-    write_csv("data/int/FAIR_pdfs_tidy.csv")
+    write_csv("data/intermediate/FAIR_pdfs_tidy.csv")
